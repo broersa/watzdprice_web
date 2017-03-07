@@ -1,0 +1,5 @@
+{
+  "watzdprice_web_api_url": "https://api.watzdprice.nl",
+  "watzdprice_web_api_key": "andre",
+  "watzdprice_web_port": "8082"
+}

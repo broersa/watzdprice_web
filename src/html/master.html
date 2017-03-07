@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="my.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand col-xs-12 col-sm-12 col-md-2 col-lg-2" href="/"><img alt="Watzdprice.nl" src="/logo.png"/></a>
+      </div>
+      <div>
+        <form class="navbar-form" action="/" >
+          <div class="form-group" style="display:inline;">
+            <div class="input-group" style="display:table;">
+              <input class="form-control autocomplete" name="q" placeholder="Zoek product..." value="{{q}}" autocomplete="off" autofocus="autofocus" type="text" onfocus="var temp_value=this.value; this.value=''; this.value=temp_value">
+              <div class="input-group-btn" style="width:1%;">
+                  <button class="btn btn-default" type="submit" title="Zoek"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    {{#homepage}}{{>homepage}}{{/homepage}}
+  </div>
+</body>
+<script>
+$(function() {
+  var availableTags = [
+    "ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++",
+    "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran",
+    "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl",
+    "PHP", "Python", "Ruby", "Scala", "Scheme"
+  ];
+
+  $(".autocomplete").autocomplete({
+    source: availableTags
+  });
+});
+</script>
+</html>
