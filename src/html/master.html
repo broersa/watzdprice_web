@@ -11,10 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="my.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="/my.css">
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,21 +33,35 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    {{#homepage}}{{>homepage}}{{/homepage}}
-  </div>
+  {{#homepage}}{{>homepage}}{{/homepage}}
+  {{#searchresults}}{{>searchresults}}{{/searchresults}}
+  {{#product}}{{>product}}{{/product}}
+  {{#about}}{{>about}}{{/about}}
+  {{#bot}}{{>bot}}{{/bot}}
+  {{#notfound}}{{>notfound}}{{/notfound}}
+  {{#error}}{{>error}}{{/error}}
+  <footer>
+    <div class="container">
+      <p class="pull-right"><a href="#">Naar boven..</a></p>
+      <p>&copy; 2017 Watzdprice &middot; <a href="/about">Over ons</a> &middot; <a href="https://api.watzdprice.nl/">Developers</a></p>
+    </div>
+  </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
 $(function() {
-  var availableTags = [
-    "ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++",
-    "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran",
-    "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl",
-    "PHP", "Python", "Ruby", "Scala", "Scheme"
-  ];
-
   $(".autocomplete").autocomplete({
-    source: availableTags
+    source: function (term, cb) {
+      $.ajax({
+          url: '/autocomplete?q=' + encodeURIComponent(term.term),
+          context: document.body,
+          success: function(result){
+            cb(JSON.parse(result).w);
+          }
+      });
+    }
   });
 });
 </script>
