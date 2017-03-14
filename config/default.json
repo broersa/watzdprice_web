@@ -1,5 +1,6 @@
 {
   "watzdprice_web_api_url": "https://api.watzdprice.nl",
   "watzdprice_web_api_key": "unknown",
-  "watzdprice_web_port": "8080"
+  "watzdprice_web_port": "8080",
+  "watzdprice_web_trackingid": "xxx"
 }
