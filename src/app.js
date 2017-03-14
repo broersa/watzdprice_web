@@ -22,6 +22,7 @@ app.get('/', function(req, res, next) {
   if (!req.query.q) {
     return res.render('master', {
       title: 'Home | watzdprice.nl',
+      trackingid: config.watzdprice_web_trackingid,
       homepage: {
         items: []
       }
@@ -36,6 +37,7 @@ app.get('/', function(req, res, next) {
       }
       return res.render('master', {
         title: req.query.q + ' | watzdprice.nl',
+        trackingid: config.watzdprice_web_trackingid,
         q: req.query.q,
         searchresults: {
           items: result.products
@@ -57,6 +59,7 @@ app.get('/product/:id', function(req, res, next) {
       result.price=Number(result.price).toFixed(2);
       return res.render('master', {
         title: result.name + ' | watzdprice.nl',
+        trackingid: config.watzdprice_web_trackingid,
         id: req.query.id,
         product: result
       });
@@ -69,6 +72,7 @@ app.get('/product/:id', function(req, res, next) {
 app.get('/about', function (req, res, next) {
   return res.render('master', {
     title: 'Over ons | watzdprice.nl',
+    trackingid: config.watzdprice_web_trackingid,
     about: {
     }
   });
@@ -77,6 +81,7 @@ app.get('/about', function (req, res, next) {
 app.get('/bot', function (req, res, next) {
   return res.render('master', {
     title: 'Bot | watzdprice.nl',
+    trackingid: config.watzdprice_web_trackingid,
     bot: {
     }
   });
@@ -104,6 +109,7 @@ app.use(function(req, res, next){
   if (req.accepts('html')) {
       res.render('master', {
         title: 'Pagina niet gevonden... | watzdprice.nl',
+        trackingid: config.watzdprice_web_trackingid,
         id: req.query.id,
         notfound: {
           url: req.url
@@ -126,6 +132,7 @@ app.use(function (err, req, res, next) {
   console.error(JSON.stringify(err));
   res.status(500).render('master', {
     title: 'Error | watzdprice.nl',
+    trackingid: config.watzdprice_web_trackingid,
     error: {
       code: err.code,
       message: err.message
