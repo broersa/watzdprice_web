@@ -1,15 +1,21 @@
-<div class="container">
+<div class="container searchresults">
   <div class="row">
   {{#searchresults.items}}
     <div class="col-sm-6 col-md-4 col-lg-2">
       <div class="thumbnail">
         <div class="image">
-          <img class="product" src="{{image}}" alt="{{name}}">
+          <img class="product" src="{{image}}" alt="{{name}}"/>
         </div>
         <div class="caption">
-          <h6>{{name}}</h6>
-          <p>{{price}}</p>
-          <p><a href="/product/{{id}}" class="btn" role="button">Naar details..</a></p>
+          <div class="productname">
+            <h6>{{name}}</h6>
+          </div>
+          <div class="productprice">
+            <p>&euro; {{price}}</p>
+          </div>
+          <div class="productlink">
+            <p><a href="/product/{{id}}" class="btn" role="button">Naar details..</a></p>
+          </div>
         </div>
       </div>
     </div>

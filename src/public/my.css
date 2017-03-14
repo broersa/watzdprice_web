@@ -125,3 +125,24 @@ footer a:hover {
   color: white;
   text-decoration: none;
 }
+
+.container.searchresults {
+  margin-top: 20px;
+}
+
+.productname {
+  height: 50px;
+  text-align: center;
+}
+
+.productprice {
+  text-align: center;
+}
+
+.productlink {
+  text-align: center;
+}
+
+.container.product {
+  margin-top: 20px;
+}

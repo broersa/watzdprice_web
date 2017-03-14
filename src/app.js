@@ -31,6 +31,9 @@ app.get('/', function(req, res, next) {
       if (err) {
         return next(new MyError('ERROR', 'home', 'Error', {q: req.query.q}, err));
       }
+      for (var i = 0; i < result.products.length; i++) {
+        result.products[i].price = Number(result.products[i].price).toFixed(2);
+      }
       return res.render('master', {
         title: req.query.q + ' | watzdprice.nl',
         q: req.query.q,
@@ -51,6 +54,7 @@ app.get('/product/:id', function(req, res, next) {
       if (!result) {
         return next();
       }
+      result.price=Number(result.price).toFixed(2);
       return res.render('master', {
         title: result.name + ' | watzdprice.nl',
         id: req.query.id,
